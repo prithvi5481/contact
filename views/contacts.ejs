@@ -1,0 +1,22 @@
+<h1>Contact List</h1>
+
+<% if (locals.error) { %>
+  <p><%= locals.error %></p>
+<% } %>
+
+<form method="POST" action="/contacts/add">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="text" name="contactNo" placeholder="Contact No." required>
+  <button type="submit">Add Contact</button>
+</form>
+
+<ul>
+  <% contacts.forEach((contact) => { %>
+    <li>
+      <%= contact.name %> - <%= contact.contactNo %>
+      <a href="/contacts/delete/<%= contact._id %>">Delete</a>
+    </li>
+  <% }); %>
+</ul>
+
+<a href="/auth/logout">Logout</a>
